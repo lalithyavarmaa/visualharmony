@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Harmony</title>
+</head>
+<body>
+    <h1>Visual Harmony</h1>
+    <button onclick="getRecommendations()">Get Song Recommendations</button>
+    <div id="results"></div>
+
+    <script>
+        async function getRecommendations() {
+            //will replace this with actual data from model
+            const inputData = {
+                emotions: ["happy", "calm"],
+                vibes: ["relaxed", "peaceful"],
+                objects: ["beach", "sunset"]
+            };
+
+            try {
+                // a POST request to the Flask app
+                const response = await fetch('http://127.0.0.1:5001/recommend', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(inputData)
+                });
+
+                // parse the JSON response
+                const songs = await response.json();
+
+                const resultsDiv = document.getElementById('results');
+                resultsDiv.innerHTML = '<h2>Recommended Songs:</h2>';
+                songs.forEach(song => {
+                    resultsDiv.innerHTML += `
+                        <p><strong>${song.title}</strong> by ${song.artist} (Mood: ${song.mood})</p>
+                    `;
+                });
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('results').innerHTML = '<p>Error fetching recommendations.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
