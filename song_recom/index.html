@@ -78,7 +78,27 @@
         .results {
             margin-top: 30px;
             text-align: left;
+            max-height: 300px; /* Limits the height of the results */
+            overflow-y: auto;  /* Enables vertical scrolling */
+            padding-right: 10px; /* Ensures content doesn't hide behind scrollbar */
+            scrollbar-width: thin; /* Makes scrollbar thinner (Firefox) */
+            scrollbar-color: rgba(255, 255, 255, 0.5) transparent; /* Custom scrollbar */
         }
+        
+        /* For WebKit browsers (Chrome, Edge, Safari) */
+        .results::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .results::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
+        
+        .results::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
 
         .results h2 {
             font-size: 1.5rem;
