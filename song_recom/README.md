@@ -1,6 +1,6 @@
 # Visual Harmony - Backend
 
-This is the back-end for the Visual Harmony project. It recommends songs based on image features (emotions, vibes, and objects) using the Spotify Web API.
+This is the back-end for the Visual Harmony project, which currently recommends songs based on emotions extracted from images using the Spotify Web API. Future updates will incorporate additional features like vibes and objects for enhanced recommendations.
 
 ## Setup
 
